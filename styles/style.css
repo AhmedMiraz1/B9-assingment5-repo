@@ -3,3 +3,8 @@
 body{
   font-family: "raleway", sans-serif;
 }
+
+
+li {
+  display: flex;
+}
