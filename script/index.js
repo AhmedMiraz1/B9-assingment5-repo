@@ -56,6 +56,8 @@ function handleDiscount() {
   } else if (coupon === "Couple 20") {
     total = total - total * 0.2;
     document.getElementById("removable").style.display = "none";
+  } else {
+    ("please select your coupon");
   }
 
   showGrandTotal(total);
