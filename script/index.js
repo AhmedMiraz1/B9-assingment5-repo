@@ -2,56 +2,63 @@ const allSit = document.getElementsByClassName("sit");
 
 let count = 0;
 let minus = 8;
+const setArray = [];
 
 for (const sit of allSit) {
   sit.addEventListener("click", addSeat);
-  
 
   function addSeat(e) {
-    sit.style.backgroundColor = "#1DD100";
-    sit.style.color = "white";
-    count = count + 1;
-    minus = minus - 1;
+    if (count < 4) {
+      const sitName = sit.innerText;
+      if (setArray.includes(sitName)) {
+        return;
+      }
 
-    const name = e.target.innerText;
+      sit.style.backgroundColor = "#1DD100";
+      sit.style.color = "white";
+      count = count + 1;
+      minus = minus - 1;
 
-    // create a list
-    const list = document.createElement("ul");
-    list.classList.add("flex", "w-full", "justify-between", "mt-2");
+      const name = e.target.innerText;
 
-    list.innerHTML = `<li>${name}</li><li>Economy</li><li>550</li>`;
+      // create a list
+      const list = document.createElement("ul");
+      list.classList.add("flex", "w-full", "justify-between", "mt-2");
 
-    console.log(document.getElementById("seat-list"), list);
+      list.innerHTML = `<li>${name}</li><li>Economy</li><li>550</li>`;
 
-    // add list element to the dom
-    document.getElementById("seat-list").appendChild(list);
-    sit.removeEventListener("click", addSeat);
+      console.log(document.getElementById("seat-list"), list);
 
-    const totalCost = document.getElementById("total-cost").innerText;
-    const convertNumber = parseInt(totalCost);
-    const sum = (document.getElementById("total-cost").innerText =
-      convertNumber + 550);
-      showGrandTotal(sum)
+      // add list element to the dom
+      document.getElementById("seat-list").appendChild(list);
+      sit.removeEventListener("click", addSeat);
 
-    setInnerText("current-seat", count);
-    minusInnerText("minus-count", minus);
+      const totalCost = document.getElementById("total-cost").innerText;
+      const convertNumber = parseInt(totalCost);
+      const sum = (document.getElementById("total-cost").innerText =
+        convertNumber + 550);
+      showGrandTotal(sum);
+
+      setInnerText("current-seat", count);
+      minusInnerText("minus-count", minus);
+    }
   }
 }
 
-function handleDiscount () {
-  const coupon = document.getElementById('input-field').value
+function handleDiscount() {
+  const coupon = document.getElementById("input-field").value;
 
-  let total = parseInt(document.getElementById("total-cost").innerText)
+  let total = parseInt(document.getElementById("total-cost").innerText);
 
-  if(coupon === 'NEW15') {
-    total = total - (total * 0.15)
-    document.getElementById('removable').style.display = 'none'
-  } else if (coupon === 'Couple 20') {
-    total = total - (total * 0.20)
-    document.getElementById('removable').style.display = 'none'
+  if (coupon === "NEW15") {
+    total = total - total * 0.15;
+    document.getElementById("removable").style.display = "none";
+  } else if (coupon === "Couple 20") {
+    total = total - total * 0.2;
+    document.getElementById("removable").style.display = "none";
   }
 
-  showGrandTotal(total)
+  showGrandTotal(total);
 }
 
 function setInnerText(id, value) {
@@ -64,15 +71,11 @@ function minusInnerText(id, value) {
 
 function buy() {
   showElementById("main-section");
-  
 }
-function success(){
-  showElementById("modal")
+function success() {
+  showElementById("modal");
 }
 
 function showGrandTotal(total) {
-  document.getElementById('discount').innerText = total
-
-
+  document.getElementById("discount").innerText = total;
 }
-
