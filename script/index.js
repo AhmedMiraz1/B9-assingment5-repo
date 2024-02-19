@@ -57,7 +57,7 @@ function handleDiscount() {
     total = total - total * 0.2;
     document.getElementById("removable").style.display = "none";
   } else {
-    ("please select your coupon");
+    alert("please select your coupon");
   }
 
   showGrandTotal(total);
