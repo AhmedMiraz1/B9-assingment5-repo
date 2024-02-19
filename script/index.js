@@ -5,11 +5,7 @@ let minus = 8;
 
 for (const sit of allSit) {
   sit.addEventListener("click", addSeat);
-  if(sit >= 4){
-    removeEventListener
-    console.log(sit)
-    
-  }
+  
 
   function addSeat(e) {
     sit.style.backgroundColor = "#1DD100";
@@ -68,8 +64,15 @@ function minusInnerText(id, value) {
 
 function buy() {
   showElementById("main-section");
+  
+}
+function success(){
+  showElementById("modal")
 }
 
 function showGrandTotal(total) {
   document.getElementById('discount').innerText = total
+
+
 }
+
